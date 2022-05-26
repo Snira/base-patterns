@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace App\Factories;
 
-use Illuminate\Contracts\Container\Container;
+use App\Contracts\Support\ClassInstantiator;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class AbstractModelFactory
 {
     protected static string $modelClass;
 
-    public function __construct()
+    public function __construct(private ClassInstantiator $instantiator)
     {
     }
 
     public function create(): Model
     {
-        return $this->initiate();
+        return $this->instantiate();
     }
 
-    private function initiate(): Model
+    private function instantiate(): Model
     {
-        return $this->container->make(static::$modelClass);
+        return $this->instantiator->instantiate(static::$modelClass);
     }
 }

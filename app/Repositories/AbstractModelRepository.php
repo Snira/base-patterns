@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\Support\ClassInstantiator;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +16,7 @@ abstract class AbstractModelRepository
     protected static string $modelClass;
     private Model $modelQueryInitiator;
 
-    public function __construct(private Container $container)
+    public function __construct(private ClassInstantiator $instantiator)
     {
         $this->setModelQueryInitiator();
     }
@@ -43,6 +44,6 @@ abstract class AbstractModelRepository
             throw new LogicException('static::$modelClass is expected to contain an existing model class name');
         }
 
-        $this->modelQueryInitiator = $this->container->make(static::$modelClass);
+        $this->modelQueryInitiator = $this->instantiator->instantiate(static::$modelClass);
     }
 }
