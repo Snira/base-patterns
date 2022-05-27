@@ -8,6 +8,7 @@ use App\Contracts\Repositories\RecipeRepository;
 use App\Contracts\Support\ClassInstantiator as ClassInstantiatorContract;
 use App\Factories\RecipeFactory;
 use App\Factories\ResourceFactory;
+use App\Http\Requests\ApiRequest;
 use App\Repositories\EloquentRecipeRepository;
 use App\Support\ClassInstantiator;
 use Illuminate\Support\ServiceProvider;
@@ -43,7 +44,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->resolving(
+            ApiRequest::class,
+            static function ($request, $app) {
+                ApiRequest::createFrom($app['request'], $request);
+            },
+        );
     }
 
     private function registerFactories(): void

@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('recipes', RecipeController::class, []);
+Route::resource('/recipes', RecipeController::class, []);
