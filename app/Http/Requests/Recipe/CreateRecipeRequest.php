@@ -14,7 +14,7 @@ final class CreateRecipeRequest extends ApiRequest
             parent::rules(),
             [
                 'title' => 'bail|required|string|max:50',
-                'description' => 'bail|required|string|max:250',
+                'description' => 'bail|nullable|string|max:250',
                 'how_to_cook' => 'bail|required|string',
                 'active' => 'bail|required|bool'
             ],
