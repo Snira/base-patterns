@@ -31,7 +31,7 @@ final class RecipeController extends AbstractResourceController
         return $resourceCollection->toResponse($request);
     }
 
-    public function create(CreateRecipeRequest $request): JsonResponse
+    public function store(CreateRecipeRequest $request): JsonResponse
     {
         $recipe = $this->recipeFactory->createForRequest($request);
         $this->recipeRepository->save($recipe);
