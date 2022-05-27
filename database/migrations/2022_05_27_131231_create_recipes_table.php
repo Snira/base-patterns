@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('how_to_cook');
+            $table->longText('how_to_cook');
             $table->boolean('active');
             $table->timestamps();
             $table->softDeletes();
