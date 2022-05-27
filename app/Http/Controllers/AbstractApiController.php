@@ -14,8 +14,8 @@ abstract class AbstractApiController extends BaseController
     {
     }
 
-    protected function setRequest(ApiRequest $request = null): void
+    protected function setRequest(string $requestClass = null): void
     {
-        $this->request = $this->instantiator->instantiate($request ?: ApiRequest::class);
+        $this->request = $this->instantiator->instantiate($requestClass ?: ApiRequest::class);
     }
 }
