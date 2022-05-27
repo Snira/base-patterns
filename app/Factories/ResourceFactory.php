@@ -18,7 +18,7 @@ final class ResourceFactory implements ResourceFactoryContract
     {
     }
 
-    public function createForModel(Model $model, string $resourceClass): JsonResource
+    public function createForModel(Model $model, string $resourceClass = JsonResource::class): JsonResource
     {
         return $this->instantiate($model, $resourceClass);
     }
@@ -26,9 +26,11 @@ final class ResourceFactory implements ResourceFactoryContract
     /**
      * @param Collection<Model>
      */
-    public function createForModelCollection(Collection $models, string $resourceCollectionClass = null): JsonResource
-    {
-        return $this->instantiate($models, $resourceCollectionClass ?? ResourceCollection::class);
+    public function createForModelCollection(
+        Collection $models,
+        string $resourceCollectionClass = ResourceCollection::class
+    ): JsonResource {
+        return $this->instantiate($models, $resourceCollectionClass);
     }
 
     private function instantiate($resource, string $resourceClass): JsonResource
