@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Contracts\Factories\ResourceFactory as ResourceFactoryContract;
 use App\Contracts\Factories\RecipeFactory as RecipeFactoryContract;
 use App\Contracts\Repositories\RecipeRepository;
 use App\Contracts\Support\ClassInstantiator as ClassInstantiatorContract;
 use App\Factories\RecipeFactory;
+use App\Factories\ResourceFactory;
 use App\Repositories\EloquentRecipeRepository;
 use App\Support\ClassInstantiator;
 use Illuminate\Support\ServiceProvider;
@@ -13,6 +15,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     protected static array $factories = [
+        ResourceFactoryContract::class => ResourceFactory::class,
         RecipeFactoryContract::class => RecipeFactory::class,
     ];
 

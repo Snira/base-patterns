@@ -8,6 +8,7 @@ use App\Contracts\Repositories\ModelRepository;
 use App\Contracts\Support\ClassInstantiator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use LogicException;
 use RuntimeException;
 
@@ -31,6 +32,14 @@ abstract class AbstractModelRepository implements ModelRepository
         if ($model->save() === false) {
             throw new RuntimeException('Save failed');
         }
+    }
+
+    /**
+     * @return Collection<Model>
+     */
+    public function all(): Collection
+    {
+        return $this->query()->get();
     }
 
     private function query(): Builder
