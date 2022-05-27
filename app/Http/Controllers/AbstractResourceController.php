@@ -6,7 +6,7 @@ use App\Contracts\Support\ClassInstantiator;
 use App\Http\Requests\ApiRequest;
 use Illuminate\Routing\Controller as BaseController;
 
-abstract class AbstractApiController extends BaseController
+abstract class AbstractResourceController extends BaseController
 {
     protected ApiRequest $request;
 
