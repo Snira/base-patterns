@@ -9,6 +9,7 @@ use Illuminate\Contracts\Validation\ValidatesWhenResolved;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidatesWhenResolvedTrait;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class ApiRequest extends Request implements ValidatesWhenResolved
 {
@@ -46,6 +47,11 @@ class ApiRequest extends Request implements ValidatesWhenResolved
             'perPage' => 'bail|sometimes|integer|min:1|max:250',
             'page' => 'bail|sometimes|integer|min:1',
         ];
+    }
+
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new BadRequestException();
     }
 
     protected function messages(): array
