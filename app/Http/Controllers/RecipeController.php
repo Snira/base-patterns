@@ -33,6 +33,9 @@ final class RecipeController extends AbstractResourceController
 
     public function create(CreateRecipeRequest $request): JsonResponse
     {
+        $recipe = $this->recipeFactory->createForRequest($request);
+        $this->recipeRepository->save($recipe);
 
+        return $this->returnResponse(['message' => 'created'], JsonResponse::HTTP_CREATED);
     }
 }
