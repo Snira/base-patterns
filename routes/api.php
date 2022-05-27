@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('main', MainController::class, []);
+Route::resource('recipes', RecipeController::class, []);

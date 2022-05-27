@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\Repositories\ModelRepository;
 use App\Contracts\Support\ClassInstantiator;
-use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use LogicException;
 use RuntimeException;
 
-abstract class AbstractModelRepository
+abstract class AbstractModelRepository implements ModelRepository
 {
     protected static string $modelClass;
     private Model $modelQueryInitiator;
