@@ -42,7 +42,7 @@ abstract class AbstractModelRepository implements ModelRepository
         return $this->query()->get();
     }
 
-    private function query(): Builder
+    protected function query(): Builder
     {
         return $this->modelQueryInitiator->newQuery();
     }

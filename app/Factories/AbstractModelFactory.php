@@ -18,10 +18,10 @@ abstract class AbstractModelFactory implements ModelFactory
 
     public function create(): Model
     {
-        return $this->instantiate();
+        return $this->getModel();
     }
 
-    private function instantiate(): Model
+    protected function getModel(): Model
     {
         return $this->instantiator->instantiate(static::$modelClass);
     }

@@ -11,11 +11,13 @@ final class CreateRecipeRequest extends ApiRequest
     protected function rules(): array
     {
         return array_merge(
-            parent::rules(), [
+            parent::rules(),
+            [
                 'title' => 'bail|required|string|max:50',
                 'description' => 'bail|required|string|max:250',
                 'how_to_cook' => 'bail|required|string',
-            ]
+                'active' => 'bail|required|bool'
+            ],
         );
     }
 }
