@@ -19,6 +19,6 @@ final class MainController extends AbstractApiController
 
     public function index(): JsonResponse
     {
-        return new JsonResponse(['message' => 'ok'], Response::HTTP_OK);
+        return new JsonResponse(['page' => $this->request->getPage()], Response::HTTP_OK);
     }
 }
